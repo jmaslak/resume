@@ -19,7 +19,7 @@ resume, you will either need to legally obtain those fonts or modify the
 [JTMresume.sty](https://github.com/jmaslak/resume/blob/main/JTMresume.sty)
 file to use fonts installed on your machine.
 
-To build the resume on Linux, simply use make from the command line.A
+To build the resume on Linux, simply use make from the command line.
 
 The resume generator will utilize the
 [references.bib](https://github.com/jmaslak/resume/blob/main/references.bib) file for
