@@ -11,7 +11,7 @@ import logging
 import bibtexparser
 
 LOG = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO, format='%(logname)8s [%(asctime)s] %(message)s')
+logging.basicConfig(level=logging.INFO, format='%(levelname)8s [%(asctime)s] %(message)s')
 
 
 def get_args():
@@ -30,17 +30,20 @@ def get_args():
 
 def main():
     """Extract bibtex entries by keyword."""
+    LOG.info("Starting reference extraction")
     args = get_args()
 
     parser = bibtexparser.bparser.BibTexParser(common_strings=True)
     parser.ignore_nonstandard_types = False
     parser.homogenise_fields = False
 
+    LOG.info("Reading bibtex input file")
     with open(args.source) as bibtex_file:
         db = bibtexparser.load(bibtex_file, parser)
 
     outdb = bibtexparser.bibdatabase.BibDatabase()
 
+    LOG.info("Scanning bibtex data for keywords")
     for entry in db.entries:
         if 'keywords' in entry:
             kwords = entry['keywords'].split(',')  # Simplistic, but works for my input sources
@@ -49,8 +52,11 @@ def main():
                     outdb.entries.append(entry)
                     break
 
+    LOG.info("Writing bibtex output file")
     with open(args.output, mode='w') as bibtex_out:
         bibtexparser.dump(outdb, bibtex_out)
+
+    LOG.info("Exiting normally")
 
 
 if __name__ == '__main__':
