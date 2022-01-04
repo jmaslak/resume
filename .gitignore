@@ -1,0 +1,16 @@
+*.p1
+*.p2
+*.bbl
+*.bcf
+*.log
+*.blg
+*.xml
+*.aux
+*.bak
+*.bak[0-9]*
+sections/*.bak
+sections/*.bak[0-9]*
+sections/*.log
+*.dvi
+*.out
+_minted-*

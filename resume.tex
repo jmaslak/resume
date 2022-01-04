@@ -1,0 +1,53 @@
+\documentclass[letter,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+%====================
+% Based on:
+% Overleaf Template https://www.overleaf.com/latex/templates/data-science-tech-resume-template/zcdmpfxrzjhv
+% 
+% File: resume.tex
+% Note: All formatting is done in TLCresume.sty
+% No need to touch that file. All content is in sections.
+%====================
+
+\usepackage{JTMresume}
+\addbibresource{references.bib}
+\nocite{*}
+
+\author{Joelle Tori Maslak} % Name Here
+\def\phone{~} % Fill in if a phone number on the resume is desired
+\def\city{Golden, CO USA}
+\def\email{jmaslak@antelope.net}
+\def\LinkedIn{joelle-maslak} % linkedin.com/in/______
+\def\github{jmaslak} % github username
+\def\role{Technical Leader $\cdot$ Network Engineer} % Job Title
+
+\begin{document}
+
+\import{sections/}{_header}
+\import{sections/}{objective}
+
+\raggedright
+
+\section{Skills}
+\import{sections/}{skills}
+
+\section{Technical Experience}
+\import{sections/}{experience}
+
+\section{Education}
+\import{sections/}{education}
+
+\section{Service}
+\import{sections/}{service}
+
+\section{U.S. Patents}
+\import{sections/}{patents}
+
+\section{Peer-Reviewed Publications}
+\import{sections/}{publications}
+
+\section{Conference Presentations}
+\import{sections/}{presentations}
+
+\end{document}

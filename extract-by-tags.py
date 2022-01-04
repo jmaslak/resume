@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+
+#
+# Copyright (C) 2022 Joelle Maslak
+# All Rights Reserved - See License
+#
+
+import argparse
+import logging
+
+import bibtexparser
+
+LOG = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO, format='%(logname)8s [%(asctime)s] %(message)s')
+
+
+def get_args():
+    """Process command line arguments."""
+    parser = argparse.ArgumentParser(description="Extract bibtex entries by keyword")
+    parser.add_argument('--source', '-s', required=True, help='Source bibtex file to read')
+    parser.add_argument('--output',
+                        '-o',
+                        required=True,
+                        help='Destination bibtex to create/overwrite')
+    parser.add_argument('keyword', nargs='+', help='Keywords to match to records for extraction')
+    args = parser.parse_args()
+
+    return args
+
+
+def main():
+    """Extract bibtex entries by keyword."""
+    args = get_args()
+
+    parser = bibtexparser.bparser.BibTexParser(common_strings=True)
+    parser.ignore_nonstandard_types = False
+    parser.homogenise_fields = False
+
+    with open(args.source) as bibtex_file:
+        db = bibtexparser.load(bibtex_file, parser)
+
+    outdb = bibtexparser.bibdatabase.BibDatabase()
+
+    for entry in db.entries:
+        if 'keywords' in entry:
+            kwords = entry['keywords'].split(',')  # Simplistic, but works for my input sources
+            for word in args.keyword:
+                if word in kwords:
+                    outdb.entries.append(entry)
+                    break
+
+    with open(args.output, mode='w') as bibtex_out:
+        bibtexparser.dump(outdb, bibtex_out)
+
+
+if __name__ == '__main__':
+    main()

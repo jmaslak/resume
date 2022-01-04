@@ -1,0 +1,141 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{JTMresume}[12/29/2021 resume package]
+% Based on TLCResume by Timmy Chan
+
+%
+% Include citations
+%
+\RequirePackage[style=apa,sorting=ydnt,dashed=false,backend=biber,maxbibnames=99,url=false]{biblatex}
+\AtEveryBibitem{\clearfield{extradate}}
+
+
+%
+% Don't include numbers for references
+%
+\DeclareFieldFormat{labelnumberwidth}{}
+\setlength{\biblabelsep}{0pt}
+
+
+%
+% Bold my name in citations
+% Inspired and borrowed from:
+% https://tex.stackexchange.com/questions/73136/make-specific-author-bold-using-biblatex
+%
+% Modified to properly handle name change
+%
+\def\makenamesetup{%
+  \def\bibnamedelima{~}%
+  \def\bibnamedelimb{ }%
+  \def\bibnamedelimc{ }%
+  \def\bibnamedelimd{ }%
+  \def\bibnamedelimi{ }%
+  \def\bibinitperiod{.}%
+  \def\bibinitdelim{~}%
+  \def\bibinithyphendelim{.-}}    
+\newcommand*{\makename}[2]{\begingroup\makenamesetup\xdef#1{#2}\endgroup}
+
+\newcommand*{\boldname}[1]{%
+    \def\lastname{#1}}
+\boldname{}
+
+% Patch new definitions
+\renewcommand{\mkbibnamegiven}[1]{%
+  \ifboolexpr{ test {\ifdefequal{\lastname}{\namepartfamily}} }
+    {\mkbibbold{#1}}{#1}%
+}
+
+\renewcommand{\mkbibnamefamily}[1]{%
+  \ifboolexpr{ test {\ifdefequal{\lastname}{\namepartfamily}} }
+    {\mkbibbold{#1}}{#1}%
+}
+
+\boldname{Maslak}
+
+
+%
+% Font Information
+%
+\RequirePackage[T1]{fontenc} %  Font encoding https://texfaq.org/FAQ-why-inp-font
+\RequirePackage[10pt]{moresize}
+\RequirePackage{csquotes}
+\RequirePackage{fontspec}
+\setmainfont{Adobe Jenson Pro}
+\setsansfont{Malcom-Regular}[SmallCapsFont=Malcom-Expert]
+\newfontfamily\sflite{Malcom-Light}[SmallCapsFont=Malcom-Expert-Light]
+
+
+%
+% Margins
+%
+\RequirePackage[margin=.5in, top=.5in]{geometry}
+
+
+%
+% Color
+%
+\RequirePackage{xcolor}
+\definecolor{highlight}{RGB}{4, 90, 90}
+
+
+%
+% Hyperlinks
+%
+\RequirePackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=highlight}
+
+
+%
+% Bullet Points
+%
+\RequirePackage[inline]{enumitem}
+\setlength{\tabcolsep}{0in}
+
+
+%
+% Section Formatting
+%
+\RequirePackage[nostruts]{titlesec}
+\titlespacing*{\section}{0em}{0.5em}{0em}
+\titleformat{\section}{\color{highlight} \scshape \sffamily \raggedright \large}{}{0em}{}[\vspace{-0.75em}\hrulefill]
+
+
+%
+% Subsection Formatting
+%
+\titlespacing*{\subsection}{0em}{0em}{0em}
+\titleformat{\subsection}{\sffamily\bfseries}{}{0em}{}[]
+
+
+%
+% Additional useful packages
+%
+\RequirePackage{standalone}
+\RequirePackage{import}
+\RequirePackage{array}
+
+
+%
+% Boldface command
+%
+\newcommand{\skills}[1]{{\bfseries #1}}
+
+
+%
+% Subtext
+%
+\newcommand{\subtext}[1]{\textit{#1}\par\vspace{-.75em}}
+
+
+%
+% tighter spacing than itemize
+%
+\setlist[itemize]{align=parleft,left=0pt..1em}
+\newenvironment{zitemize}{
+\begin{itemize} \itemsep 0pt \parskip 0pt \parsep 1pt}
+{\end{itemize}\vspace{-.5em}}
+
+
+%
+% No page numbers
+%
+\pagenumbering{gobble}
