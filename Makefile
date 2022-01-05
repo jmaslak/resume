@@ -8,6 +8,7 @@ BIBER=biber
 LATEXFLAGS=
 BIBFILE=../../references.bib
 TAGS=mypresentations mypatent mypub
+PYTESTARGS="-v"
 
 default : all
 
@@ -17,6 +18,10 @@ all : $(PROJECT).pdf
 clean : 
 	rm -f *.p1 *.p2 *.bbl *.bcf *.log *.blg *.xml *.aux *.bak *.bak[0-9]* sections/*.bak sections/*.bak[0-9]* sections/*.log *.dvi *.out
 	rm -rf _minted-$(PROJECT)
+
+.PHONY: test
+test : $(PROJECT).pdf references.bib
+	pytest $(PYTESTARGS)
 
 indent :
 	for i in *.tex sections/*.tex ; do latexindent -s -sl -w "$$i" ; done
@@ -37,7 +42,7 @@ spell :
 	$(LATEX) $(LATEXFLAGS) --draftmode $< && touch $(basename $<).p1
 
 references.bib: $(BIBFILE)
-	python3 extract-by-tags.py --source "$(BIBFILE)" --output references.bib $(TAGS)
+	python3 extract_by_tags.py --source "$(BIBFILE)" --output references.bib $(TAGS)
 
 $(BIBFILE):
 	echo "The bib file source does not exist"

@@ -28,11 +28,8 @@ def get_args():
     return args
 
 
-def main():
-    """Extract bibtex entries by keyword."""
-    LOG.info("Starting reference extraction")
-    args = get_args()
-
+def read_bibtex(args):
+    """Read the bibtex file."""
     parser = bibtexparser.bparser.BibTexParser(common_strings=True)
     parser.ignore_nonstandard_types = False
     parser.homogenise_fields = False
@@ -41,6 +38,11 @@ def main():
     with open(args.source) as bibtex_file:
         db = bibtexparser.load(bibtex_file, parser)
 
+    return db
+
+
+def filter_by_keywords(args, db):
+    """Creates a new bibtex database that consists only of keywords in args."""
     outdb = bibtexparser.bibdatabase.BibDatabase()
 
     LOG.info("Scanning bibtex data for keywords")
@@ -51,6 +53,17 @@ def main():
                 if word in kwords:
                     outdb.entries.append(entry)
                     break
+
+    return outdb
+
+
+def main():
+    """Extract bibtex entries by keyword."""
+    LOG.info("Starting reference extraction")
+    args = get_args()
+
+    db = read_bibtex(args)
+    outdb = filter_by_keywords(args, db)
 
     LOG.info("Writing bibtex output file")
     with open(args.output, mode='w') as bibtex_out:

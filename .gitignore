@@ -14,3 +14,5 @@ sections/*.log
 *.dvi
 *.out
 _minted-*
+__pycache__/
+.nfs*
