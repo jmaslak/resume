@@ -27,7 +27,7 @@ indent :
 	for i in *.tex sections/*.tex ; do latexindent -s -sl -w "$$i" ; done
 
 spell :
-	for f in $(PROJECT).tex $(SECTIONS) ; do aspell check $$f ; done
+	for f in README.md $(PROJECT).tex $(SECTIONS) ; do aspell check $$f ; done
 
 %.pdf: %.p2
 	$(LATEX) $(LATEXFLAGS) $(basename $<).tex
