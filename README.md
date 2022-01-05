@@ -60,5 +60,9 @@ I used Timmy Chan's
 [excellent resume template](https://www.overleaf.com/latex/templates/data-science-tech-resume-template/zcdmpfxrzjhv)
 as a starting point for my resume. I modified this template
 significantly to include patent, conference presentation, and publication
-information, as well as styling and functionality changes.
+information, as well as styling and functionality changes. The LaTeX
+code borrowed heavily from this template, although it was modified
+extensively.
+
+All python and Makefile code was created by Joelle Maslak.
 
