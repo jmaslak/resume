@@ -33,7 +33,18 @@ extract references from my master file (my master file contains
 references to docs I cite in other LaTeX documents beyond what is
 relevant to my resume). I use three tags: mypresentations, mypatent, and
 mypub in my master file to tag my own works.  These tags are also
-referenced in the LaTeX sources.
+referenced in the LaTeX sources. The dependencies for this extraction
+script are listed in
+[requirements.txt](https://github.com/jmaslak/resume/blob/requirements.txt)
+and are installable via `pip`. Assuming you have `pip` installed, you
+can install the dependencies with `pip install -r requirements.txt`.
+
+Unit tests of the Python code (to extract references) and do basic
+integration checks on the resume output can be run with `make test`.
+However, before you run the tests, ensure you've installed the test
+dependencies (in addition to the standard dependencies as described
+above), using `pip install -r requirements-test.txt`. Then you can run
+`make test` to verify the generation of the resume.
 
 Finally, most of the text for the resume, beyond header information and
 dynamic content is located in the
