@@ -70,9 +70,9 @@ All python and Makefile code was created by Joelle Maslak.
 
 This work is licensed under the Creative Commons CC BY 4.0 License - see
 the included
-(https://github.com/jmaslak/resume/blob/main/LICENSE)[LICENSE] file or
-the summary at (https://creativecommons.org/licenses/by/4.0/)[Creative
-Commons].
+[LICENSE](https://github.com/jmaslak/resume/blob/main/LICENSE) file or
+the summary at the [Creative Commons](https://creativecommons.org/licenses/by/4.0/)
+site.
 
 This is an attribution-required license, so you are required to credit
 the creator of the template this is based upon, Timmy Chan, and also
