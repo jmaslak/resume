@@ -74,7 +74,8 @@ the included
 the summary at the [Creative Commons](https://creativecommons.org/licenses/by/4.0/)
 site.
 
-This is an attribution-required license, so you are required to credit
+This is an attribution-required license, so you are welcome to
+incorporate this into your own works, but you are required to credit
 the creator of the template this is based upon, Timmy Chan, and also
 Joelle Maslak for her changes to these templates.
 
