@@ -13,9 +13,9 @@ in, I'm open to hearing about the opportunity.
 To compile the resume, you must have LaTeX installed with many other
 modules. I recommend the TeX-live distribution.
 
-In addition, two fonts are used, Adobe Jenson Pro and Malcom, both of
-which are commercial and thus not included in this repository.  To compile the
-resume, you will either need to legally obtain those fonts or modify the
+In addition, one commercial font was used, Adobe Jenson Pro, which is
+commercial and thus not included in this repository.  To compile the
+resume, you will either need to legally obtain this font or modify the
 [JTMresume.sty](https://github.com/jmaslak/resume/blob/main/JTMresume.sty)
 file to use fonts installed on your machine.
 
