@@ -8,6 +8,7 @@ BIBER=biber
 LATEXFLAGS=
 BIBFILE=../../references.bib
 TAGS=mypresentations mypatent mypub
+TAG_EXTRACT_OPTIONS=-x notresume
 PYTESTARGS="-v"
 
 default : all
@@ -42,7 +43,7 @@ spell :
 	$(LATEX) $(LATEXFLAGS) --draftmode $< && touch $(basename $<).p1
 
 references.bib: $(BIBFILE)
-	python3 extract_by_tags.py --source "$(BIBFILE)" --output references.bib $(TAGS)
+	python3 extract_by_tags.py --source "$(BIBFILE)" --output references.bib $(TAG_EXTRACT_OPTIONS) $(TAGS)
 
 $(BIBFILE):
 	echo "The bib file source does not exist"

@@ -22,6 +22,7 @@ def get_args():
                         '-o',
                         required=True,
                         help='Destination bibtex to create/overwrite')
+    parser.add_argument('--exclude', '-x', help='Comma seperated tags to exclude from extraction')
     parser.add_argument('keyword', nargs='+', help='Keywords to match to records for extraction')
     args = parser.parse_args()
 
@@ -57,13 +58,37 @@ def filter_by_keywords(args, db):
     return outdb
 
 
+def filter_by_excludes(args, db):
+    """Filter out keywords in the exlude list."""
+    if args.exclude is None:
+        return db
+
+    outdb = bibtexparser.bibdatabase.BibDatabase()
+    excludes = args.exclude.split(",")
+
+    LOG.info("Scanning bibtex data for excludes")
+    for entry in db.entries:
+        if 'keywords' in entry:
+            kwords = entry['keywords'].split(',')  # Simplistic, but works for my input sources
+            include = True
+            for word in excludes:
+                if word in kwords:
+                    include = False
+                    break
+            if include:
+                outdb.entries.append(entry)
+
+    return outdb
+
+
 def main():
     """Extract bibtex entries by keyword."""
     LOG.info("Starting reference extraction")
     args = get_args()
 
     db = read_bibtex(args)
-    outdb = filter_by_keywords(args, db)
+    db = filter_by_keywords(args, db)
+    outdb = filter_by_excludes(args, db)
 
     LOG.info("Writing bibtex output file")
     with open(args.output, mode='w') as bibtex_out:
