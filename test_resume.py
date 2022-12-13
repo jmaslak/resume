@@ -43,6 +43,6 @@ def test_hasSections():
     assert "Technical Experience" in titles
     assert "Education" in titles
     assert "Service" in titles
-    assert "Peer-Reviewed Publications" in titles
+    assert "Peer-Reviewed and In-Preparation Publications" in titles
     assert "Conference Presentations" in titles
     assert "OtherSection_1" in titles  # For experience elements, second one.
