@@ -1,6 +1,6 @@
 # Joelle Maslak\'s Resume
 
-Continue to [a generated version of my resume](resume.pdf)
+Continue to [a generated version of my resume](https://github.com/jmaslak/resume/raw/main/resume.pdf)
 
 # Job Search Status
 
