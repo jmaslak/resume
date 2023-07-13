@@ -13,7 +13,7 @@ in, I'm open to hearing about the opportunity.
 To compile the resume, you must have LaTeX installed with many other
 modules. I recommend the TeX-live distribution.
 
-In addition, one commercial font was used, Adobe Jenson Pro and Acumin
+In addition, two commercial fonts were used, Adobe Jenson Pro and Acumin
 Pro, which are commercial and thus not included in this repository.  To
 compile the resume, you will either need to legally obtain these fonts
 or modify the
