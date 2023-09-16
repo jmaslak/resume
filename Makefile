@@ -43,6 +43,7 @@ spell :
 	$(LATEX) $(LATEXFLAGS) --draftmode $< && touch $(basename $<).p1
 
 references.bib: $(BIBFILE)
+	ruff extract_by_tags.py
 	python3 extract_by_tags.py --source "$(BIBFILE)" --output references.bib $(TAG_EXTRACT_OPTIONS) $(TAGS)
 
 $(BIBFILE):
