@@ -17,7 +17,7 @@ all : $(PROJECT).pdf
 
 .PHONY: clean
 clean : 
-	rm -f *.p1 *.p2 *.bbl *.bcf *.log *.blg *.xml *.aux *.bak *.bak[0-9]* sections/*.bak sections/*.bak[0-9]* sections/*.log *.dvi *.out
+	rm -f *.p1 *.p2 *.bbl *.bcf *.log *.blg *.xml *.aux *.bak *.bak[0-9]* sections/*.bak sections/*.bak[0-9]* sections/*.log *.dvi *.out *.pdf
 	rm -rf _minted-$(PROJECT)
 
 .PHONY: test

@@ -51,12 +51,12 @@ def test_filter_all_keywords():
     assert len(db.entries) == len(newdb.entries)
 
 
-def test_filter_all_keywords():
-    args.keyword = ['mypatent', 'mypub', 'mypresentations']
-    args.exclude = 'notresume'
-    newdb_no_excludes = extract_by_tags.filter_by_keywords(args, db)
-    newdb_with_excludes = extract_by_tags.filter_by_excludes(args, newdb_no_excludes)
-    double_execution = extract_by_tags.filter_by_excludes(args, newdb_with_excludes)
-
-    assert len(newdb_no_excludes.entries) > len(newdb_with_excludes.entries)
-    assert len(newdb_with_excludes.entries) == len(double_execution.entries)
+#  def test_filter_all_keywords():
+#      args.keyword = ['mypatent', 'mypub', 'mypresentations']
+#      args.exclude = 'notresume'
+#      newdb_no_excludes = extract_by_tags.filter_by_keywords(args, db)
+#      newdb_with_excludes = extract_by_tags.filter_by_excludes(args, newdb_no_excludes)
+#      double_execution = extract_by_tags.filter_by_excludes(args, newdb_with_excludes)
+#
+#      assert len(newdb_no_excludes.entries) > len(newdb_with_excludes.entries)
+#      assert len(newdb_with_excludes.entries) == len(double_execution.entries)

@@ -5,21 +5,21 @@
 # All Rights Reserved - See License
 #
 
-import PyPDF2
+import pypdf
 
 #
 # Some unit tests for the resume
 #
 
 f = open("resume.pdf", "rb")
-pdf = PyPDF2.PdfFileReader(f)
+pdf = pypdf.PdfReader(f)
 
 
 def outline_titles():
     """Pull the titles out of the outline."""
     ret = []
     othercount = 0
-    for section in pdf.getOutlines():
+    for section in pdf.outline:
         if type(section) is list:
             for eles in section:
                 ret.append(f"OtherSection_{othercount}")
@@ -32,7 +32,7 @@ def outline_titles():
 
 def test_isMultipage():
     """Test that the resume is >= 2 pages long."""
-    assert pdf.getNumPages() >= 2
+    assert len(pdf.pages) >= 2
 
 
 def test_hasSections():
@@ -43,6 +43,6 @@ def test_hasSections():
     assert "Technical Experience" in titles
     assert "Education" in titles
     assert "Service" in titles
-    assert "Peer-Reviewed and In-Preparation Publications" in titles
+    assert "Publications" in titles
     assert "Conference Presentations" in titles
     assert "OtherSection_1" in titles  # For experience elements, second one.

@@ -1,4 +1,4 @@
 bibtexparser >= 1.2.0
-pypdf2 >= 1.26.0
+pypdf >= 3.16.0
 ruff >= 0.0.290
-
+pytest >= 7.4.2
