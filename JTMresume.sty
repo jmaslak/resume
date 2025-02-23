@@ -42,22 +42,21 @@
   \def\bibinithyphendelim{.-}}    
 \newcommand*{\makename}[2]{\begingroup\makenamesetup\xdef#1{#2}\endgroup}
 
-\newcommand*{\boldname}[1]{%
-    \def\lastname{#1}}
-\boldname{}
-
 % Patch new definitions
 \renewcommand{\mkbibnamegiven}[1]{%
   \ifboolexpr{ test {\ifdefequal{\lastname}{\namepartfamily}} }
-    {\mkbibbold{#1}}{#1}%
+    {\mkbibbold{#1}}{#1}
 }
 
 \renewcommand{\mkbibnamefamily}[1]{%
-  \ifboolexpr{ test {\ifdefequal{\lastname}{\namepartfamily}} }
-    {\mkbibbold{#1}}{#1}%
+  \ifboolexpr{ test {\ifdefequal{\wire}{\namepartfamily}} }
+    {\mkbibbold{#1}}{
+       \ifboolexpr{ test {\ifdefequal{\lastname}{\namepartfamily}} }
+         {\mkbibbold{#1}}{#1}%
+    }
 }
-
-\boldname{Maslak}
+\def\lastname{Maslak}
+\def\wire{the Working to increase Inclusivity in Research Ethics (WIRE) Consortium}
 
 %
 % Sort using month and day
