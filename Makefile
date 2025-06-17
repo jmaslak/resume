@@ -1,12 +1,12 @@
 PROJECT=resume
 SECTIONS=sections/service.tex sections/education.tex sections/experience.tex sections/_header.tex sections/objective.tex sections/skills.tex sections/publications.tex sections/patents.tex sections/presentations.tex
 LATEX=lualatex
-BIBLIOGRAPHIES=../../references.bib ../../film.bib
+BIBLIOGRAPHIES=$${HOME}/references.bib
 IMAGES=
 STYLES=JTMresume.sty
 BIBER=biber
 LATEXFLAGS=
-BIBFILE=../../references.bib
+BIBFILE=$${HOME}/references.bib
 TAGS=mypresentations mypatent mypub
 TAG_EXTRACT_OPTIONS=-x notresume
 PYTESTARGS="-v"
