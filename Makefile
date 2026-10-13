@@ -7,7 +7,7 @@ STYLES=JTMresume.sty
 BIBER=biber
 LATEXFLAGS=
 BIBFILE=$${HOME}/references.bib
-TAGS=mypresentations mypatent mypub
+TAGS=mypresentations mypatent mypub myposter
 TAG_EXTRACT_OPTIONS=-x notresume
 PYTESTARGS="-v"
 
