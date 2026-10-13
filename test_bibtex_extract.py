@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Copyright (C) 2022 Joelle Maslak
+# Copyright (C) 2022, 2026 Joelle Maslak
 # All Rights Reserved - See License
 #
 
@@ -45,7 +45,7 @@ def test_filter_two_keywords():
 
 
 def test_filter_all_keywords():
-    args.keyword = ['mypatent', 'mypub', 'mypresentations']
+    args.keyword = ['mypatent', 'myposter', 'mypub', 'mypresentations']
     newdb = extract_by_tags.filter_by_keywords(args, db)
 
     assert len(db.entries) == len(newdb.entries)
